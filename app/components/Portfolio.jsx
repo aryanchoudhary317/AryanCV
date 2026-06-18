@@ -5,16 +5,18 @@ import Image from 'next/image';
 const projects = [
   { title: 'Finance', category: 'web development', img: '/assets/images/project-1.jpg' },
   { title: 'Orizon', category: 'web development', img: '/assets/images/project-2.png' },
-  { title: 'Fundo', category: 'web design', img: '/assets/images/project-3.jpg' },
-  { title: 'Brawlhalla', category: 'applications', img: '/assets/images/project-4.png' },
-  { title: 'DSM.', category: 'web design', img: '/assets/images/project-5.png' },
-  { title: 'MetaSpark', category: 'web design', img: '/assets/images/project-6.png' },
   { title: 'Summary', category: 'web development', img: '/assets/images/project-7.png' },
-  { title: 'Task Manager', category: 'applications', img: '/assets/images/project-8.jpg' },
   { title: 'Arrival', category: 'web development', img: '/assets/images/project-9.png' },
+  { title: 'Brand Identity', category: 'graphics design', img: '/assets/images/project-3.jpg' },
+  { title: 'MetaSpark', category: 'graphics design', img: '/assets/images/project-6.png' },
+  { title: 'DSM.', category: 'graphics design', img: '/assets/images/project-5.png' },
+  { title: 'Loop Pack', category: 'gifs', img: '/assets/images/project-4.png' },
+  { title: 'Bounce FX', category: 'gifs', img: '/assets/images/project-8.jpg' },
+  { title: 'Character Rig', category: '2d animations', img: '/assets/images/project-7.png' },
+  { title: 'Motion Intro', category: '2d animations', img: '/assets/images/project-9.png' },
 ];
 
-const filters = ['All', 'Web design', 'Applications', 'Web development'];
+const filters = ['All', 'Web development', 'Graphics design', 'Gifs', '2d animations'];
 
 export default function Portfolio() {
   const [active, setActive] = useState('all');
@@ -58,10 +60,20 @@ export default function Portfolio() {
               <ion-icon name="chevron-down"></ion-icon>
             </div>
           </button>
-          <ul className={`select-list ${selectOpen ? '' : ''}`} style={selectOpen ? { opacity: 1, visibility: 'visible', pointerEvents: 'all' } : {}}>
+          <ul
+            className="select-list"
+            style={selectOpen ? { opacity: 1, visibility: 'visible', pointerEvents: 'all' } : {}}
+          >
             {filters.map((f) => (
               <li key={f} className="select-item">
-                <button onClick={() => { setActive(f.toLowerCase()); setSelectOpen(false); }}>{f}</button>
+                <button
+                  onClick={() => {
+                    setActive(f.toLowerCase());
+                    setSelectOpen(false);
+                  }}
+                >
+                  {f}
+                </button>
               </li>
             ))}
           </ul>
@@ -76,7 +88,13 @@ export default function Portfolio() {
                   <div className="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <Image src={p.img} alt={p.title} fill style={{ objectFit: 'cover' }} loading="lazy" />
+                  <Image
+                    src={p.img}
+                    alt={p.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    loading="lazy"
+                  />
                 </figure>
                 <h3 className="project-title">{p.title}</h3>
                 <p className="project-category">{p.category}</p>

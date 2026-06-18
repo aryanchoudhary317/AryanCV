@@ -28,8 +28,8 @@ export default function About() {
       </header>
 
       <section className="about-text">
-        <p>I&apos;m Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.</p>
-        <p>My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.</p>
+        <p>Hi, I'm Aryan Choudhary, an MCA graduate and a passionate Full Stack Developer with a strong interest in building modern web and mobile applications. I have developed responsive websites using React.js and Next.js, and cross-platform Android applications using React Native. For backend services, authentication, and database management, I have hands-on experience with Firebase.</p>
+        <p>Along with development, I enjoy graphic design, 2D animation, motion graphics, and video editing. I also have practical knowledge of PC building, hardware assembly, and troubleshooting. I enjoy learning new technologies and creating user-friendly digital experiences that combine functionality with creative design.</p>
       </section>
 
       {/* Services */}
