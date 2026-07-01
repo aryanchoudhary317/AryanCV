@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import Resume from './components/Resume';
 import Portfolio from './components/Portfolio';
-import Blog from './components/Blog';
+import Training from './components/Training';
 import Contact from './components/Contact';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         {activePage === 'about' && <About />}
         {activePage === 'resume' && <Resume />}
         {activePage === 'portfolio' && <Portfolio />}
-        {activePage === 'blog' && <Blog />}
+        {activePage === 'training & certificates' && <Training />}
         {activePage === 'contact' && <Contact />}
       </div>
     </main>

@@ -1,6 +1,6 @@
 'use client';
 
-const tabs = ['About', 'Resume', 'Portfolio', 'Blog', 'Contact'];
+const tabs = ['About', 'Resume', 'Portfolio', 'Training & Certificates', 'Contact'];
 
 export default function Navbar({ activePage, setActivePage }) {
   return (

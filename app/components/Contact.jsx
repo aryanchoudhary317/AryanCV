@@ -1,8 +1,16 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [form, setForm] = useState({ fullname: '', email: '', message: '' });
+  const [sending, setSending] = useState(false);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init('kY8MVFRgSH1zje4RH');
+  }, []);
 
   const isValid = form.fullname.trim() && form.email.trim() && form.message.trim();
 
@@ -10,9 +18,34 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Message sent!');
+    setSending(true);
+    setMessage('');
+
+    try {
+      await emailjs.send(
+        'service_rgmh7yi', // Service ID
+        'template_e0c7p5u', // Template ID
+        {
+          to_email: 'your_email@gmail.com', // Your email
+          from_name: form.fullname,
+          from_email: form.email,
+          message: form.message,
+        }
+      );
+
+      setMessage('Message sent successfully!');
+      setForm({ fullname: '', email: '', message: '' });
+      
+      // Clear message after 3 seconds
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setMessage('Failed to send message. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -45,6 +78,7 @@ export default function Contact() {
               required
               value={form.fullname}
               onChange={handleChange}
+              disabled={sending}
             />
             <input
               type="email"
@@ -54,6 +88,7 @@ export default function Contact() {
               required
               value={form.email}
               onChange={handleChange}
+              disabled={sending}
             />
           </div>
           <textarea
@@ -63,10 +98,31 @@ export default function Contact() {
             required
             value={form.message}
             onChange={handleChange}
+            disabled={sending}
           ></textarea>
-          <button className="form-btn" type="submit" disabled={!isValid}>
+          
+          {message && (
+            <p style={{
+              marginBottom: '1rem',
+              padding: '0.8rem',
+              borderRadius: '8px',
+              textAlign: 'center',
+              color: message.includes('successfully') ? '#00D9FF' : '#ff6b6b',
+              backgroundColor: message.includes('successfully') ? 'rgba(0, 217, 255, 0.1)' : 'rgba(255, 107, 107, 0.1)',
+              border: `1px solid ${message.includes('successfully') ? 'rgba(0, 217, 255, 0.3)' : 'rgba(255, 107, 107, 0.3)'}`
+            }}>
+              {message}
+            </p>
+          )}
+          
+          <button 
+            className="form-btn" 
+            type="submit" 
+            disabled={!isValid || sending}
+            style={{ opacity: sending ? 0.7 : 1 }}
+          >
             <ion-icon name="paper-plane"></ion-icon>
-            <span>Send Message</span>
+            <span>{sending ? 'Sending...' : 'Send Message'}</span>
           </button>
         </form>
       </section>
