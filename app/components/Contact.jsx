@@ -8,8 +8,8 @@ export default function Contact() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Initialize EmailJS with your public key
-    emailjs.init('kY8MVFRgSH1zje4RH');
+    // Initialize EmailJS with your public key from environment variables
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'kY8MVFRgSH1zje4RH');
   }, []);
 
   const isValid = form.fullname.trim() && form.email.trim() && form.message.trim();
@@ -25,10 +25,10 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        'service_rgmh7yi', // Service ID
-        'template_e0c7p5u', // Template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_rgmh7yi',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_e0c7p5u',
         {
-          to_email: 'your_email@gmail.com', // Your email
+          to_email: process.env.NEXT_PUBLIC_RECEIVER_EMAIL || 'aryanchoudhary3171@gmail.com',
           from_name: form.fullname,
           from_email: form.email,
           message: form.message,
