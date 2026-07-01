@@ -1,8 +1,5 @@
-import { defineConfig } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals.js";
-
-const eslintConfig = defineConfig([
-  ...nextVitals,
+/** @type {import("eslint").Linter.Config[]} */
+export default [
   {
     ignores: [
       ".next/**",
@@ -12,6 +9,4 @@ const eslintConfig = defineConfig([
       "node_modules/**",
     ],
   },
-]);
-
-export default eslintConfig;
+];
