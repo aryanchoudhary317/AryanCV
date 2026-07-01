@@ -2,13 +2,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const clients = [
-  '/assets/images/logo-1-color.png',
-  '/assets/images/logo-2-color.png',
-  '/assets/images/logo-3-color.png',
-  '/assets/images/logo-4-color.png',
-  '/assets/images/logo-5-color.png',
-];
+// Clients list - currently only using KalkaTravells
+const clients = [];
 
 const toolsListStyle = {
   display: 'flex',

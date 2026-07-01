@@ -9,7 +9,7 @@ export default function Sidebar() {
     <aside className={`sidebar ${isOpen ? 'active' : ''}`}>
       <div className="sidebar-info">
         <figure className="avatar-box">
-          <Image src="/images/aryancvIMG.png" alt="Aryan Choudhary" width={120} height={80} />
+          <Image src="/images/aryancvIMG.png" alt="Aryan Choudhary" width={130} height={130} priority />
         </figure>
 
         <div className="info-content">
