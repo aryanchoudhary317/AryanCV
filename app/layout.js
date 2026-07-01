@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'vCard - Personal Portfolio',
-  icons: { icon: '/assets/images/logo.ico' },
+  icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({ children }) {
