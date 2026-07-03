@@ -1,11 +1,12 @@
 export default function Training() {
   const trainings = [
     {
-      title: 'Full Stack Web , React Native Mobile Development',
+      title: 'Full Stack Web & React Native Mobile Development',
       provider: 'Ninja Deliveries',
       date: '2024 - 2025',
-      description: 'Comprehensive training in React.js,React Native, Firebase,  and JavaScript. Worked on real-world projects with hands-on experience in building responsive web and mobile applications.',
-      skills: ['React.js','Mobile Development','React Native', 'Firebase', 'JavaScript']
+      description: 'Comprehensive training in React.js, React Native, Firebase, and JavaScript. Worked on real-world projects with hands-on experience in building responsive web and mobile applications.',
+      skills: ['React.js', 'Mobile Development', 'React Native', 'Firebase', 'JavaScript'],
+      certificateFile: '/Docs/Certificate_ND-INTERN-5281_Aryan_Choudhary.pdf'
     },
     {
       title: 'Graphic Design & Motion Graphics',
@@ -29,67 +30,60 @@ export default function Training() {
         <h2 className="h2 article-title">Training & Certificates</h2>
       </header>
 
-      <section className="training-section">
-        <ul className="training-list" style={{ listStyle: 'none', padding: 0 }}>
+      <section className="timeline">
+        <ol className="timeline-list">
           {trainings.map((training) => (
-            <li 
-              key={training.title} 
-              style={{
-                marginBottom: '2rem',
-                padding: '1.5rem',
-                borderRadius: '14px',
-                background: 'var(--border-gradient-onyx)',
-                position: 'relative',
-                zIndex: 1
-              }}
-            >
-              <div style={{ position: 'absolute', inset: '1px', borderRadius: 'inherit', background: 'var(--bg-gradient-jet)', zIndex: -1 }}></div>
-              
-              <h3 className="h3" style={{ marginBottom: '0.5rem', color: '#00D9FF' }}>
-                {training.title}
-              </h3>
-              
-              <p style={{ 
-                fontSize: '0.9rem', 
-                color: '#FFB000', 
-                fontWeight: '600', 
-                marginBottom: '0.3rem',
-                margin: 0 
-              }}>
+            <li key={training.title} className="timeline-item">
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', marginBottom: '0.5rem' }}>
+                <h4 className="h4 timeline-item-title">{training.title}</h4>
+                {training.certificateFile && (
+                  <a 
+                    href={training.certificateFile} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '0.35rem 0.8rem',
+                      backgroundColor: 'rgba(0, 217, 255, 0.15)',
+                      color: '#00D9FF',
+                      border: '1px solid rgba(0, 217, 255, 0.5)',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      whiteSpace: 'nowrap',
+                      transition: 'all 0.3s ease',
+                      display: 'inline-block'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'rgba(0, 217, 255, 0.25)';
+                      e.target.style.borderColor = '#00D9FF';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'rgba(0, 217, 255, 0.15)';
+                      e.target.style.borderColor = 'rgba(0, 217, 255, 0.5)';
+                    }}
+                  >
+                    View Certificate
+                  </a>
+                )}
+              </div>
+              <span>{training.date}</span>
+              <p style={{ fontSize: '0.9em', color: '#fff', fontStyle: 'italic', marginBottom: '0.5rem' }}>
                 {training.provider}
               </p>
-              
-              <p style={{ 
-                fontSize: '0.85rem', 
-                color: 'var(--light-gray-70)', 
-                marginBottom: '0.8rem',
-                margin: 0
-              }}>
-                {training.date}
-              </p>
-
-              <p style={{
-                color: 'var(--light-gray)',
-                fontSize: '0.95rem',
-                lineHeight: '1.6',
-                marginBottom: '1rem'
-              }}>
-                {training.description}
-              </p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
-                {training.skills.map((skill) => (
+              <p className="timeline-text">{training.description}</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.8rem' }}>
+                {training.skills.map((skill, index) => (
                   <span
                     key={skill}
                     style={{
                       display: 'inline-block',
-                      padding: '0.4rem 0.8rem',
-                      backgroundColor: 'rgba(0, 217, 255, 0.1)',
                       color: '#00D9FF',
-                      borderRadius: '6px',
-                      fontSize: '0.8rem',
+                      fontSize: '0.75rem',
                       fontWeight: '500',
-                      border: '1px solid rgba(0, 217, 255, 0.3)'
+                      paddingBottom: '0.3rem',
+                      borderBottom: '1px solid #00D9FF'
                     }}
                   >
                     {skill}
@@ -98,7 +92,7 @@ export default function Training() {
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
     </article>
   );
