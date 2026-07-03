@@ -9,11 +9,30 @@ export default function Sidebar() {
     <aside className={`sidebar ${isOpen ? 'active' : ''}`}>
       <div className="sidebar-info">
         <figure className="avatar-box">
-          <Image src="/images/aryancvIMG.png" alt="Aryan Choudhary" width={130} height={130} priority />
+          <Image 
+            src="/images/aryancvIMG.png" 
+            alt="Aryan Choudhary" 
+            width={260} 
+            height={260} 
+            priority
+            quality={95}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          />
         </figure>
 
         <div className="info-content">
-          <h1 className="name" title="Aryan Choudhary">Aryan Choudhary</h1>
+          <h1 className="name" title="Aryan Choudhary">
+            Aryan Choudhary
+            <span className="mobile-social-icons">
+              <a href="https://www.linkedin.com/in/aryan-choudhary317?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+              <a href="https://github.com/aryanchoudhary317" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-github"></ion-icon></a>
+              <a href="https://www.instagram.com/iamlegendbird?igsh=NTZsYmR3ZTh0ZTBo" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </span>
+          </h1>
           <p className="title">Web developer</p>
         </div>
 
@@ -72,13 +91,13 @@ export default function Sidebar() {
 
         <ul className="social-list">
           <li className="social-item">
-            <a href="#" className="social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="https://www.linkedin.com/in/aryan-choudhary317?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
           </li>
           <li className="social-item">
-            <a href="#" className="social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="https://github.com/aryanchoudhary317" target="_blank" rel="noopener noreferrer" className="social-link"><ion-icon name="logo-github"></ion-icon></a>
           </li>
           <li className="social-item">
-            <a href="#" className="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="https://www.instagram.com/iamlegendbird?igsh=NTZsYmR3ZTh0ZTBo" target="_blank" rel="noopener noreferrer" className="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
           </li>
         </ul>
       </div>
