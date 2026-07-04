@@ -33,7 +33,7 @@ export default function Sidebar() {
               <a href="https://www.instagram.com/iamlegendbird?igsh=NTZsYmR3ZTh0ZTBo" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
             </span>
           </h1>
-          <p className="title">Web developer</p>
+          <p className="title">Developer & Designer</p>
         </div>
 
         <button className="info_more-btn" onClick={() => setIsOpen(!isOpen)}>
