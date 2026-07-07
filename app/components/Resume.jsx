@@ -41,7 +41,7 @@ export default function Resume() {
           </div>
           <h3 className="h3">Education</h3>
           <a 
-            href="/Docs/aryan_CV.pdf" 
+            href="/Docs/Aryan_CV.pdf" 
             download="Aryan_CV.pdf"
             style={{
               marginLeft: 'auto',
