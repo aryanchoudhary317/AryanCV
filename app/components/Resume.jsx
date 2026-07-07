@@ -27,24 +27,6 @@ export default function Resume() {
     return () => observer.disconnect();
   }, []);
 
-  const handleDownloadResume = async () => {
-    try {
-      const response = await fetch('/Docs/aryan_CV.pdf');
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Aryan_CV.pdf';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error('Download failed:', error);
-      window.open('/Docs/aryan_CV.pdf', '_blank');
-    }
-  };
-
   return (
     <article className="resume active" data-page="resume">
       <header>
@@ -58,8 +40,9 @@ export default function Resume() {
             <ion-icon name="book-outline"></ion-icon>
           </div>
           <h3 className="h3">Education</h3>
-          <button 
-            onClick={handleDownloadResume}
+          <a 
+            href="/Docs/aryan_CV.pdf" 
+            download="Aryan_CV.pdf"
             style={{
               marginLeft: 'auto',
               padding: '8px 16px',
@@ -87,7 +70,7 @@ export default function Resume() {
           >
             <ion-icon name="download-outline" style={{ fontSize: '1rem' }}></ion-icon>
             Download Resume
-          </button>
+          </a>
         </div>
         <ol className="timeline-list">
           {[
