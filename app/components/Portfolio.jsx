@@ -32,9 +32,16 @@ const projects = [
   // 2D Animations
   { title: 'Character Animation', category: '2d animations', link: 'https://youtu.be/Ta80-cnP9jY?si=AecmNkZKDRl6J0NE', videoId: 'Ta80-cnP9jY' },
   { title: 'Motion Design', category: '2d animations', link: 'https://youtu.be/fTwVJfwVaIQ?si=tzJBFeurwL_TmgaK', videoId: 'fTwVJfwVaIQ' },
+  
+  // Motion Graphics (Cloudinary Videos)
+  { title: 'Motion Design 1', category: 'motion graphics', videoUrl: 'https://res.cloudinary.com/ebffmvzj/video/upload/v1783519958/km_20260708_360p_30f_20260708_191425_ahsqet.3gp' },
+  { title: 'Motion Design 2', category: 'motion graphics', videoUrl: 'https://res.cloudinary.com/ebffmvzj/video/upload/v1783519956/km_20260708_360p_30f_20260708_191730_umfoxp.3gp' },
+  { title: 'Motion Design 3', category: 'motion graphics', videoUrl: 'https://res.cloudinary.com/ebffmvzj/video/upload/v1783519953/km_20260708_360p_30f_20260708_192130_ul9pzl.3gp' },
+  { title: 'Motion Design 4', category: 'motion graphics', videoUrl: 'https://res.cloudinary.com/ebffmvzj/video/upload/v1783519951/km_20260708_360p_30f_20260708_192704_l4lf8m.3gp' },
+  { title: 'Motion Design 5', category: 'motion graphics', videoUrl: 'https://res.cloudinary.com/ebffmvzj/video/upload/v1783519943/km_20260322_1080p_30f_20260322_181146_etizch.3gp' },
 ];
 
-const filters = ['All', 'Web development', 'Graphics design', 'Gifs', '2d animations'];
+const filters = ['All', 'Web development', 'Graphics design', 'Gifs', '2d animations', 'Motion graphics'];
 
 export default function Portfolio() {
   const [active, setActive] = useState('all');
@@ -107,7 +114,7 @@ export default function Portfolio() {
                 target={p.link ? '_blank' : '_self'} 
                 rel={p.link ? 'noopener noreferrer' : ''}
                 onClick={(e) => {
-                  if (!p.link && p.img) {
+                  if (!p.link && (p.img || p.videoUrl)) {
                     e.preventDefault();
                     setSelectedImage(p);
                   }
@@ -139,6 +146,23 @@ export default function Portfolio() {
                       loading="lazy"
                     />
                   </figure>
+                ) : p.videoUrl ? (
+                  <figure className="project-img" style={{ position: 'relative', backgroundColor: '#1e1e1e', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', cursor: 'pointer', minHeight: '300px' }}>
+                    <div className="project-item-icon-box">
+                      <ion-icon name="play-circle-outline" style={{ fontSize: '40px' }}></ion-icon>
+                    </div>
+                    <video
+                      src={p.videoUrl}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                      }}
+                    />
+                  </figure>
                 ) : (
                   <figure className="project-img" style={{ position: 'relative', backgroundColor: '#1e1e1e', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', cursor: 'pointer', minHeight: '300px' }}>
                     <div style={{ textAlign: 'center', color: '#fff' }}>
@@ -155,7 +179,7 @@ export default function Portfolio() {
         </ul>
       </section>
 
-      {/* Fullscreen Image Modal */}
+      {/* Fullscreen Image/Video Modal */}
       {selectedImage && (
         <div
           style={{
@@ -183,13 +207,28 @@ export default function Portfolio() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={selectedImage.img}
-              alt={selectedImage.title}
-              fill
-              style={{ objectFit: 'contain' }}
-              priority
-            />
+            {selectedImage.videoUrl ? (
+              <video
+                controls
+                autoPlay
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                }}
+              >
+                <source src={selectedImage.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <Image
+                src={selectedImage.img}
+                alt={selectedImage.title}
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            )}
             <button
               onClick={() => setSelectedImage(null)}
               style={{
