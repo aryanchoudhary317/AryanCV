@@ -121,7 +121,7 @@ export default function Resume() {
           {[
             { 
               title: '6-Month Software Development Trainee', 
-              year: '2024 — 2025', 
+              year: '2025 — 2026', 
               company: 'Ninja Deliveries',
               text: 'Worked on real-world web and mobile application development using React Native, React.js, Next.js, and Firebase. Contributed to developing delivery management features, Firebase integration, bug fixing, UI implementation, and application testing.' 
             },
